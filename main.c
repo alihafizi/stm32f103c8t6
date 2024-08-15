@@ -1,5 +1,6 @@
 #include "stm32f10x.h"
 #include "stdio.h"
+#include "string.h"
 void USART1_Init(void) {
     // Enable clocks for USART1 and GPIOA
     RCC->APB2ENR |= RCC_APB2ENR_USART1EN | RCC_APB2ENR_IOPAEN;
@@ -54,7 +55,7 @@ float LM35_ReadTemperature(void) {
 int main(void) {
     USART1_Init();
     ADC1_Init();
-		USART1_SendChar('A');
+
     char buffer[50];
 
     while (1) {
