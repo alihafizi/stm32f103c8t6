@@ -1,6 +1,5 @@
 #include "stm32f10x.h"
 #include "stdio.h"
-
 void USART1_Init(void) {
     // Enable clocks for USART1 and GPIOA
     RCC->APB2ENR |= RCC_APB2ENR_USART1EN | RCC_APB2ENR_IOPAEN;
@@ -47,7 +46,7 @@ uint16_t ADC1_Read(void) {
 
 float LM35_ReadTemperature(void) {
     uint16_t adcValue = ADC1_Read();
-    float voltage = adcValue * 5 / 4096;  // Convert ADC value to voltage
+    float voltage = adcValue * 5.0 / 4096;  // Convert ADC value to voltage with Vref=5V
     float temperature = voltage * 100;  // Convert voltage to temperature
     return temperature;
 }
@@ -55,13 +54,14 @@ float LM35_ReadTemperature(void) {
 int main(void) {
     USART1_Init();
     ADC1_Init();
-	
+
     char buffer[50];
 
     while (1) {
         float temperature = LM35_ReadTemperature();
         sprintf(buffer, "Temperature: %.2f C\r\n", temperature);
         USART1_SendString(buffer);
-
+        
+        for (volatile int i = 0; i < 1000000; i++);  // Delay
     }
 }
