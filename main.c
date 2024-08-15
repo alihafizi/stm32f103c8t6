@@ -62,7 +62,6 @@ int main(void) {
         float temperature = LM35_ReadTemperature();
         sprintf(buffer, "Temperature: %.2f C\r\n", temperature);
         USART1_SendString(buffer);
-        
-        for (volatile int i = 0; i < 1000000; i++);  // Delay
+
     }
 }
