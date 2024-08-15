@@ -456,6 +456,7 @@
       <Layer>
         <LayName>STM32F103C8T6</LayName>
         <LayPrjMark>1</LayPrjMark>
+        <LayDesc>All pripheral with STM32F1</LayDesc>
       </Layer>
     </Layers>
   </LayerInfo>
