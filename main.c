@@ -46,7 +46,7 @@ uint16_t ADC1_Read(void) {
 
 float LM35_ReadTemperature(void) {
     uint16_t adcValue = ADC1_Read();
-    float voltage = adcValue * 3.3 / 1024;  // Convert ADC value to voltage
+    float voltage = adcValue * 5 / 1024;  // Convert ADC value to voltage
     float temperature = voltage * 100;  // Convert voltage to temperature
     return temperature;
 }
