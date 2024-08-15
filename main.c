@@ -54,7 +54,7 @@ float LM35_ReadTemperature(void) {
 int main(void) {
     USART1_Init();
     ADC1_Init();
-		USART1_SendChar('ALI');
+		USART1_SendChar('A');
     char buffer[50];
 
     while (1) {
