@@ -34,7 +34,7 @@ void ADC1_Init(void) {
 
     // Configure ADC1
     ADC1->CR2 |= ADC_CR2_ADON;  // Turn on ADC1
-    ADC1->SQR3 |= (0 << ADC_SQR3_SQ1);  // Select channel 0
+    ADC1->SQR3 |= (0 << ADC_SQR3_SQ1_0);  // Select channel 0
     ADC1->CR2 |= ADC_CR2_CAL;  // Start calibration
     while (ADC1->CR2 & ADC_CR2_CAL);  // Wait for calibration to complete
 }
@@ -55,7 +55,6 @@ float LM35_ReadTemperature(void) {
 int main(void) {
     USART1_Init();
     ADC1_Init();
-		USART1_SendChar ('A');
 	
     char buffer[50];
 
