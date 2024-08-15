@@ -1,31 +1,20 @@
 #include "stm32f10x.h"
 
 void systemclockinit(void);
-void usart1init(void);
+
 
 int main(){
 	systemclockinit();
-	usart1init();
-	
-	GPIOA->CRH &= ~GPIO_CRH_CNF9 & ~ GPIO_CRH_CNF10;	
-	GPIOA->CRH |= GPIO_CRH_CNF10_0 | GPIO_CRH_CNF9_1 | GPIO_CRH_MODE9;
-	
-	uint8_t data;
+
+
 	
 	while (1){
-		while (!(USART1->SR & USART_SR_RXNE));
-		data = USART1->DR;
-		while (!(USART1->SR & USART_SR_TXE));	
-		USART1->DR = data;
+
 		
 	}
 	
 }
 
-void usart1init(void){
-	USART1->CR1 |= USART_CR1_RE | USART_CR1_TE | USART_CR1_UE;
-	USART1->BRR = 0x1D4C;
-}
 
 
 void systemclockinit(void){
